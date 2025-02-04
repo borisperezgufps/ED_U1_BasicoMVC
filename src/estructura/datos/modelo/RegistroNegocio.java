@@ -15,6 +15,9 @@ public class RegistroNegocio {
     public boolean registrarPersona(String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;
+        
+        System.out.println("Registro exitoso: "+nombre+" "+apellido);
+        
         return true;
     }
     
