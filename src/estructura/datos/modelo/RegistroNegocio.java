@@ -11,10 +11,12 @@ package estructura.datos.modelo;
 public class RegistroNegocio {
 
     private String nombre, apellido;
+    private int edad;
     
-    public boolean registrarPersona(String nombre, String apellido) {
+    public boolean registrarPersona(String nombre, String apellido, int edad) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.edad = edad;
         
         System.out.println("Registro exitoso: "+nombre+" "+apellido);
         

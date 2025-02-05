@@ -6,6 +6,7 @@ package estructura.datos.controlador;
 
 import estructura.datos.modelo.RegistroNegocio;
 import estructura.datos.vista.RegistroVista;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,13 +20,22 @@ public class RegistroControlador {
     public RegistroControlador(RegistroVista frame) {
         this.frame = frame;
         negocio = new RegistroNegocio();
+        
+        // Llena el combo de edad
+        DefaultComboBoxModel<String> modeloEdad = (DefaultComboBoxModel<String>)frame.getCmbEdad().getModel();
+        modeloEdad.removeAllElements();
+        for (int i = 18; i < 30; i++) {
+            modeloEdad.addElement(""+i);
+        }
+        
     }
     
     public void registrarPersona(){
         String nombre = frame.getTxtNombre().getText();
         String apellido = frame.getTxtApellido().getText();
+        String edad = frame.getCmbEdad().getModel().getSelectedItem().toString();
         
-        boolean exito = negocio.registrarPersona(nombre, apellido);
+        boolean exito = negocio.registrarPersona(nombre, apellido, Integer.parseInt(edad));
         if(exito)
             JOptionPane.showMessageDialog(null, "Registro exitoso");
         else
